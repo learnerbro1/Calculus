@@ -1,0 +1,509 @@
+/* ==========================================================================
+   NOTEBOOK CSS: Handwritten Aesthetic, Ruled Lines, Spiral Spine, Red Margin
+   ========================================================================== */
+
+:root {
+  --paper-bg: #fcf9f2;
+  --paper-line: #e3ebf5;
+  --paper-grid: #edf2f7;
+  --margin-line: #f87171;
+  --margin-line-secondary: #fca5a5;
+  --ink-blue: #1b2838;
+  --ink-dark: #0f172a;
+  --ink-red: #dc2626;
+  --ink-green: #15803d;
+  --ink-purple: #7e22ce;
+  --highlighter-yellow: rgba(254, 240, 138, 0.65);
+  --highlighter-green: rgba(187, 247, 208, 0.6);
+  --highlighter-pink: rgba(254, 205, 211, 0.65);
+  --sticky-yellow: #fef08a;
+  --sticky-shadow: rgba(0, 0, 0, 0.12);
+  --font-heading: 'Kalam', 'Comic Neue', cursive, sans-serif;
+  --font-body: 'Comic Neue', 'Patrick Hand', sans-serif;
+  --font-note: 'Comic Neue', 'Patrick Hand', sans-serif;
+  --font-teacher: 'Kalam', 'Patrick Hand', cursive, sans-serif;
+}
+
+/* Simple Handwriting Font Themes */
+body.font-neat-print {
+  --font-heading: 'Kalam', 'Comic Neue', cursive, sans-serif;
+  --font-body: 'Comic Neue', 'Patrick Hand', sans-serif;
+  --font-note: 'Comic Neue', 'Patrick Hand', sans-serif;
+  --font-teacher: 'Kalam', 'Patrick Hand', cursive, sans-serif;
+}
+
+body.font-pen-notes {
+  --font-heading: 'Kalam', cursive, sans-serif;
+  --font-body: 'Kalam', 'Patrick Hand', cursive, sans-serif;
+  --font-note: 'Kalam', cursive, sans-serif;
+  --font-teacher: 'Kalam', cursive, sans-serif;
+}
+
+body.font-schoolbook {
+  --font-heading: 'Short Stack', 'Patrick Hand', cursive, sans-serif;
+  --font-body: 'Patrick Hand', sans-serif;
+  --font-note: 'Patrick Hand', sans-serif;
+  --font-teacher: 'Short Stack', cursive, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #e5e0d8;
+  background-image: 
+    radial-gradient(#d6cebe 1px, transparent 1px),
+    linear-gradient(to right, #ded8cc 1px, transparent 1px);
+  background-size: 20px 20px, 40px 40px;
+  color: var(--ink-blue);
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1.65;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Notebook Desktop Layout Frame */
+.notebook-wrapper {
+  max-width: 1100px;
+  margin: 24px auto;
+  position: relative;
+  display: flex;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.25),
+    0 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  background: #3b2a1a; /* simulated leather cover border */
+  padding: 8px 12px 8px 8px;
+}
+
+/* Spiral Wire Binding */
+.notebook-spine {
+  width: 44px;
+  position: relative;
+  background: #2b1f13;
+  border-radius: 6px 0 0 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+  z-index: 10;
+}
+
+.spiral-ring {
+  width: 32px;
+  height: 14px;
+  background: linear-gradient(to bottom, #d1d5db, #6b7280, #374151, #9ca3af);
+  border-radius: 12px;
+  box-shadow: 
+    inset 0 1px 2px rgba(255,255,255,0.8),
+    2px 2px 4px rgba(0,0,0,0.6);
+  margin: 6px 0;
+  position: relative;
+}
+
+.spiral-ring::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 3px;
+  width: 8px;
+  height: 8px;
+  background: #111827;
+  border-radius: 50%;
+}
+
+/* The Notebook Main Page */
+.notebook-page {
+  flex: 1;
+  background-color: var(--paper-bg);
+  background-image: 
+    /* The faint horizontal blue ruled lines */
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 27px,
+      var(--paper-line) 28px
+    );
+  position: relative;
+  border-radius: 0 6px 6px 0;
+  padding: 24px 36px 60px 84px;
+  min-height: 880px;
+  box-shadow: inset 5px 0 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Vertical Double Red Margin Lines */
+.notebook-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 66px;
+  width: 2px;
+  background-color: var(--margin-line);
+  z-index: 2;
+  box-shadow: 3px 0 0 var(--margin-line-secondary);
+}
+
+/* Perforation dots near the spine */
+.notebook-page::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 18px;
+  width: 4px;
+  background-image: radial-gradient(circle, #cbd5e1 1.5px, transparent 1.5px);
+  background-size: 4px 14px;
+}
+/* Notebook Right Divider Tabs */
+.notebook-tabs-column {
+  position: absolute;
+  right: -52px;
+  top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 5;
+}
+
+.notebook-tab {
+  width: 58px;
+  height: 90px;
+  background: #f1f5f9;
+  border: 2px solid #cbd5e1;
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: bold;
+  color: #334155;
+  box-shadow: 4px 2px 6px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.notebook-tab:hover {
+  width: 66px;
+  filter: brightness(1.05);
+}
+
+.notebook-tab.active {
+  width: 72px;
+  background: #fff;
+  border-color: #94a3b8;
+  box-shadow: 6px 3px 8px rgba(0,0,0,0.2);
+  color: var(--ink-dark);
+}
+
+.tab-part-1 { background: #fee2e2; border-color: #fca5a5; }
+.tab-part-2 { background: #e0f2fe; border-color: #7dd3fc; }
+.tab-part-3 { background: #dcfce7; border-color: #86efac; }
+.tab-part-4 { background: #ffedd5; border-color: #fdba74; }
+.tab-part-5 { background: #f3e8ff; border-color: #d8b4fe; }
+.tab-lab    { background: #fef08a; border-color: #fde047; }
+
+/* Top Header with Pencil Progress */
+.notebook-header {
+  border-bottom: 2px dashed #cbd5e1;
+  padding-bottom: 18px;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.teacher-meta-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-teacher);
+  font-size: 16px;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.teacher-notes-title {
+  font-family: var(--font-heading);
+  font-size: 34px;
+  font-weight: bold;
+  color: var(--ink-dark);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.teacher-notes-subtitle {
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: #475569;
+}
+
+/* Pencil Drawing Progress Bar */
+.pencil-progress-container {
+  margin-top: 14px;
+  background: rgba(226, 232, 240, 0.6);
+  height: 12px;
+  border-radius: 6px;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.pencil-progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #64748b, #334155);
+  border-radius: 6px;
+  width: 4%;
+  position: relative;
+  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pencil-lead-tip {
+  position: absolute;
+  right: -12px;
+  top: -10px;
+  font-size: 20px;
+  transform: rotate(45deg);
+  filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.3));
+}
+
+.progress-label-wrap {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #64748b;
+  margin-top: 4px;
+  font-family: var(--font-body);
+}
+
+/* Coffee Stain Doodle */
+.coffee-ring-doodle {
+  position: absolute;
+  top: 12px;
+  right: 24px;
+  width: 72px;
+  height: 72px;
+  border: 4px solid rgba(160, 114, 76, 0.22);
+  border-radius: 48% 52% 49% 51% / 53% 47% 53% 47%;
+  pointer-events: none;
+  filter: blur(0.5px);
+  transform: rotate(18deg);
+}
+
+.coffee-ring-doodle::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  width: 54px;
+  height: 52px;
+  border: 2px solid rgba(160, 114, 76, 0.14);
+  border-radius: 51% 49% 50% 50%;
+}
+/* Torn Paper Section Divider */
+.torn-paper-divider {
+  margin: 42px 0 32px 0;
+  height: 24px;
+  background-image: 
+    radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, transparent 70%),
+    repeating-linear-gradient(45deg, #cbd5e1 0, #cbd5e1 6px, transparent 6px, transparent 12px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.torn-paper-label {
+  background: var(--paper-bg);
+  padding: 4px 16px;
+  font-family: var(--font-teacher);
+  font-size: 15px;
+  color: #64748b;
+  border: 1px dashed #cbd5e1;
+  border-radius: 4px;
+}
+
+/* Sticky Note Callout Box */
+.sticky-note {
+  background: var(--sticky-yellow);
+  padding: 20px 24px;
+  margin: 28px 0;
+  position: relative;
+  border-radius: 2px 2px 14px 2px;
+  box-shadow: 
+    3px 6px 12px var(--sticky-shadow),
+    0 1px 3px rgba(0,0,0,0.08);
+  transform: rotate(-0.8deg);
+  border: 1px solid #fef08a;
+  transition: transform 0.2s ease;
+}
+
+.sticky-note:hover {
+  transform: rotate(0deg) scale(1.01);
+}
+
+/* Simulated frosted tape strip holding the note */
+.sticky-tape {
+  position: absolute;
+  top: -10px;
+  left: 36px;
+  width: 70px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  backdrop-filter: blur(1px);
+  transform: rotate(-3deg);
+  border-left: 2px dashed rgba(0,0,0,0.08);
+  border-right: 2px dashed rgba(0,0,0,0.08);
+}
+
+.sticky-note-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--ink-red);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sticky-note-body {
+  font-size: 19px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+/* Highlighter Yellow and Colors */
+.highlight-text {
+  background: linear-gradient(104deg, var(--highlighter-yellow) 0.9%, rgba(254, 240, 138, 0.4) 2.4%, var(--highlighter-yellow) 98%);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.highlight-red {
+  color: var(--ink-red);
+  font-weight: bold;
+}
+
+.highlight-green {
+  color: var(--ink-green);
+  font-weight: bold;
+}
+
+.highlight-orange {
+  color: #ea580c;
+  font-weight: bold;
+}
+
+/* Sketched Hand-Boxed Formula */
+.hand-boxed-formula {
+  background: #ffffff;
+  border: 2px solid #1e293b;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; /* Organic wobbly border */
+  padding: 20px 24px;
+  margin: 24px 0;
+  box-shadow: 2px 3px 5px rgba(0,0,0,0.06);
+  position: relative;
+}
+
+.hand-boxed-title {
+  position: absolute;
+  top: -14px;
+  left: 24px;
+  background: var(--paper-bg);
+  padding: 0 10px;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  color: #1e3a8a;
+  border-radius: 4px;
+}
+
+.formula-display {
+  text-align: center;
+  font-size: 24px;
+  padding: 10px 0;
+  overflow-x: auto;
+}
+
+.formula-note {
+  font-size: 17px;
+  color: #4b5563;
+  margin-top: 8px;
+  border-top: 1px dashed #e2e8f0;
+  padding-top: 8px;
+}
+
+/* Table of Contents Drawer Modal */
+.toc-drawer {
+  position: fixed;
+  top: 0;
+  left: -380px;
+  width: 360px;
+  height: 100vh;
+  background: #fdfbf7;
+  border-right: 3px solid #cbd5e1;
+  box-shadow: 5px 0 25px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.toc-drawer.open {
+  left: 0;
+}
+
+.toc-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+  display: none;
+}
+
+.toc-backdrop.open {
+  display: block;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .notebook-wrapper {
+    margin: 8px;
+    padding: 4px;
+  }
+  .notebook-spine {
+    width: 28px;
+  }
+  .spiral-ring {
+    width: 22px;
+    height: 10px;
+  }
+  .notebook-page {
+    padding: 18px 18px 40px 48px;
+  }
+  .notebook-page::before {
+    left: 42px;
+  }
+  .notebook-tabs-column {
+    display: none; /* Tabs collapse into top menu on mobile */
+  }
+  .teacher-notes-title {
+    font-size: 26px;
+  }
+}

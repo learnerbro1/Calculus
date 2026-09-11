@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculus: The Notebook of Change — Hand-Written Notes by Prof. Alex</title>
+
+  <!-- Google Fonts: Simple, Legible Handwritten Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;0,700;1,400&family=Kalam:wght@400;700&family=Patrick+Hand&family=Short+Stack&display=swap" rel="stylesheet">
+
+  <!-- KaTeX for Clean Mathematical Typesetting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Rough.js for Hand-Drawn Wobbly Diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/roughjs@4.5.2/bundled/rough.umd.js"></script>
+
+  <!-- Canvas Confetti for Celebrations -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/notebook.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- Table of Contents Slide-Out Drawer -->
+  <div class="toc-backdrop" id="toc-backdrop"></div>
+  <div class="toc-drawer" id="toc-drawer">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+      <h2 style="font-family:var(--font-heading); font-size:24px; color:#1e293b;">📑 Notebook Index</h2>
+      <button id="toc-close-btn" class="notebook-nav-btn" style="padding:4px 10px; font-size:14px;">✕ Close</button>
+    </div>
+    <p style="font-size:16px; color:#64748b; margin-bottom:16px;">
+      Chapters unlock sequentially as you read and mark lessons understood.
+    </p>
+    <div id="toc-list-container"></div>
+  </div>
+
+  <!-- The Real Handwritten Notebook Container -->
+  <div class="notebook-wrapper">
+    <!-- Spiral Wire Spine on Left -->
+    <div class="notebook-spine">
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+      <div class="spiral-ring"></div>
+    </div>
+
+    <!-- Notebook Divider Tabs on Right Edge -->
+    <div class="notebook-tabs-column" id="notebook-tabs-column"></div>
+
+    <!-- Main Lined Paper Page -->
+    <main class="notebook-page">
+      <!-- Decorative Coffee Ring Doodle -->
+      <div class="coffee-ring-doodle" title="Prof. Alex's morning espresso stain"></div>
+
+      <!-- Top Header Area -->
+      <header class="notebook-header">
+        <div class="teacher-meta-bar">
+          <div>📓 <strong>MATH 101: Calculus I & II</strong> • Fall Semester</div>
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+            <button id="font-style-btn" class="notebook-nav-btn" style="font-size:13px; padding:3px 8px;" title="Switch to a different simple writing font">✍️ Font: Simple Print</button>
+            <button id="sound-toggle-btn" class="notebook-nav-btn" style="font-size:13px; padding:3px 8px;">🔔 Sound: ON</button>
+            <button id="teacher-mode-btn" class="notebook-nav-btn" style="font-size:13px; padding:3px 8px;">🔒 Strict Linear Progression</button>
+            <span>Date: Today</span>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px;">
+          <div>
+            <h1 class="teacher-notes-title">
+              Calculus: The Language of Change
+            </h1>
+            <p class="teacher-notes-subtitle">
+              Hand-written lecture notes, intuitive stories, and proofs by Prof. Alex
+            </p>
+          </div>
+          <div>
+            <button id="toc-toggle-btn" class="notebook-nav-btn">
+              📑 Table of Contents (Index)
+            </button>
+          </div>
+        </div>
+
+        <!-- Pencil Progress Meter -->
+        <div class="pencil-progress-container">
+          <div class="pencil-progress-fill" id="pencil-progress-fill">
+            <span class="pencil-lead-tip">✏️</span>
+          </div>
+        </div>
+        <div class="progress-label-wrap">
+          <span id="progress-text-label">1 of 25 Topics Mastered (4%)</span>
+          <span>Linear Unlock Mode</span>
+        </div>
+      </header>
+
+      <!-- Dynamic Topic & Quiz Content Mount Point -->
+      <div id="notebook-content">
+        <div style="text-align:center; padding:50px 0; font-family:var(--font-heading); font-size:24px;">
+          Opening notebook...
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/topics-data.js"></script>
+  <script src="js/quizzes-data.js"></script>
+  <script src="js/rough-diagrams.js"></script>
+  <script src="js/grapher.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
